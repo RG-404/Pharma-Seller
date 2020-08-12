@@ -1,56 +1,27 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {
-  View,
-  TouchableWithoutFeedback,
-  StyleSheet,
-  Image,
-  Dimensions,
-  StatusBar,
-  ImageBackground,
-} from 'react-native';
+import {StyleSheet, Image, Dimensions, StatusBar} from 'react-native';
 
-import {
-  Container,
-  Header,
-  Content,
-  Form,
-  Icon,
-  Item,
-  Input,
-  Label,
-  Button,
-  Text,
-  H1,
-} from 'native-base';
-
-import {NativeScreen} from 'react-native-screens';
-
-import {ScrollView} from 'react-native-gesture-handler';
+import {Container, Icon, Button, Text} from 'native-base';
 
 export const LandingScreen = ({navigation}) => {
-  const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmpassword] = useState('');
-  const [user, setUser] = useState('');
-  const [name, setName] = useState('');
-  const [secureTextEntry, setSecureTextEntry] = useState(true);
-
-  const [loading, setLoading] = useState(false);
-
   return (
     <Container style={styles.rootContainer}>
       <StatusBar backgroundColor="#E6F8FC" barStyle="dark-content" />
       <Image source={require('../../assets/hero.jpg')} style={styles.image} />
       <Container style={styles.signup}>
-        <H1
+        <Text
           style={{
             textTransform: 'uppercase',
             fontWeight: 'bold',
             marginBottom: 20,
             fontSize: 32,
+          }}
+          onPress={() => {
+            navigation.navigate('Main', {screen: 'Overview'});
           }}>
           Pharma Manager
-        </H1>
+        </Text>
         <Text style={{textAlign: 'center', marginBottom: 20, color: 'grey'}}>
           Picker has been extracted from react-native core and will be removed
         </Text>
@@ -58,14 +29,10 @@ export const LandingScreen = ({navigation}) => {
           <Icon type="FontAwesome" name="google" />
           <Text uppercase={false}>Signup with Google</Text>
         </Button>
-        <Button
-          rounded
-          dark
-          style={styles.submitButton}
-          onPress={() => navigation.navigate('Register')}>
+        <Button rounded dark style={styles.submitButton}>
           <Text>Register with Email</Text>
         </Button>
-        <Text onPress={()=>navigation.navigate('Login')}>
+        <Text>
           <Text>Already have account? </Text>
           <Text style={{fontWeight: 'bold'}}>Login</Text>
         </Text>
